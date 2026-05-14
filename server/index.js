@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const todolist = require('./api/todolist.js')
+const news = require('./api/news.js')
 const {connectDB} = require('./db/db_todolist.js');
 const bodyParser =require('body-parser');
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 async function serverStart(){
     await connectDB();
     app.use('/todo',todolist);
+    app.use('/news',news);
 
     
     app.listen(4000, () => {
